@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
  */
 
 //Followed Intellitek Tutorial - Module 3 - Lesson 16 - Following a Line
-//Assumes that the sensor is mounted on the right side of the robot (in our case on the "front", or fork side), placing the robot on the left side of the line.
+//Assumes that the sensor is mounted on the left side of the robot (in our case on the "front", or fork side), placing the robot on the right side of the line.
 //This OpMode will shimmy the robot back and forth, for  a smoother driving experience, try the method proposed in the Modern Robotics ODS Video that uses a gradient value.
 
 @Autonomous(name = "Frank: Line Follower", group = "Frank")
@@ -47,13 +47,15 @@ public class FrankFollowLine extends OpMode {
 
         double reflectance = ods.getLightDetected();
 
-        if (reflectance >= LINE_VALUE ) {
-            frank.portMotor.setPower(-TURN_SPEED);
-            frank.stbdMotor.setPower(0);
-        }
-        else {
+        //Less than is used for a white line on gray floor; gray reflects less light than white
+        //Use greater than for a white line on dark floor.
+        if (reflectance <= LINE_VALUE ) {
             frank.portMotor.setPower(0);
             frank.stbdMotor.setPower(-TURN_SPEED);
+        }
+        else {
+            frank.portMotor.setPower(-TURN_SPEED);
+            frank.stbdMotor.setPower(0);
             telemetry.addData("Reflectance", reflectance);
         }
     }
