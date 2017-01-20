@@ -13,7 +13,7 @@ public class Robot {
     public DcMotor stbdMotor = null;
     public DcMotor forkMotor = null;
 
-    final double FORK_SPEED  = 0.25 ;                 // sets rate to move fork motor
+    final double FORK_SPEED  = 0.20 ;                 // sets rate to move fork motor
 
     /* local OpMode members. */
     HardwareMap hwMap = null;
