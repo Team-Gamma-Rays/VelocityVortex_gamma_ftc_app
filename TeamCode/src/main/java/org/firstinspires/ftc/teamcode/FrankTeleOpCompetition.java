@@ -158,11 +158,9 @@ public class FrankTeleOpCompetition extends OpMode {
             right = upperClip;
         }
 
-        frank.portMotor.setPower(left);
-        frank.stbdMotor.setPower(right);
 
 
-        if (gamepad1.dpad_up) {
+            if (gamepad1.dpad_up) {
             frank.forkMotor.setPower(-frank.FORK_SPEED);
         } else if (gamepad1.dpad_down) {
             frank.forkMotor.setPower(frank.FORK_SPEED);
