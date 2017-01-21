@@ -43,7 +43,7 @@ import static java.lang.Thread.sleep;
  * The code is structured as an Iterative OpMode
  * <p/>
  * This OpMode uses the Frank hardware class to define the devices on the robot.
- * All device access is managed through the HardwareFrank class.
+ * All device access is managed through Robot class.
  * <p/>
  * This particular OpMode executes a basic Tank Drive Teleop for a Frank
  * <p/>
