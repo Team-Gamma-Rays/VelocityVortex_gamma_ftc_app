@@ -37,7 +37,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 
-import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
 
 /**
  * This file illustrates the concept of driving up to a line and then stopping.
@@ -64,8 +63,8 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
 public class FrankAutoDriveToLine_Linear extends LinearOpMode {
 
     /* Declare OpMode members. */
-    Robot         frank   = new Robot();   // Use a Pushbot's hardware
-                                                               // could also use HardwarePushbotMatrix class.
+    Robot         frank   = new Robot();   // Use Frank's hardware
+
     OpticalDistanceSensor lightSensor;   // Alternative MR ODS sensor
 
     static final double     WHITE_THRESHOLD = 0.2;  // spans between 0.1 - 0.5 from dark to light
