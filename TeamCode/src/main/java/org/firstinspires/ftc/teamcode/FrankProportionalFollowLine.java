@@ -17,7 +17,7 @@ public class FrankProportionalFollowLine extends LinearOpMode {
     Robot         frank   = new Robot();   // Use Frank's hardware
 
     double portPower, stbdPower, correction;
-    final double PERFECT_LIGHT_VALUE = 0.2;
+    final double PERFECT_LIGHT_VALUE = 0.5;
     final double MOTOR_BASE_POWER = -0.075;
     OpticalDistanceSensor lightSensor;   // Alternative MR ODS sensor
 
@@ -42,7 +42,7 @@ public class FrankProportionalFollowLine extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        // THis loop displays values recieved from the ODS sensor on the driver station phone.
+        // This loop displays values recieved from the ODS sensor on the driver station phone.
         while (true) {
             correction = (PERFECT_LIGHT_VALUE - lightSensor.getLightDetected());
 
