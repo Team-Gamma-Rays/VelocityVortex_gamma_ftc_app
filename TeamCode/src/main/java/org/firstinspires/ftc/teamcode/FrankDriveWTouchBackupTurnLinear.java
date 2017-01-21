@@ -20,7 +20,8 @@ public class FrankDriveWTouchBackupTurnLinear extends LinearOpMode {
 
     //Time constants
     final long BACKUP_TIME = 1000;
-    final long TURN_TIME = 250;
+    final long TURN_BASE_TIME = 250;
+    final long MAX_RANDOM_TIME = 1000;
 
     //Motor power constants
     //Values are negative because in this OpMode we want to drive Frank's motors forward on the bumper side,
@@ -53,8 +54,9 @@ public class FrankDriveWTouchBackupTurnLinear extends LinearOpMode {
                 //Set the motors to turn the robot right at power defined in TURN_POWER
                 frank.portMotor.setPower(TURN_POWER);
                 frank.stbdMotor.setPower(-TURN_POWER);
-                telemetry.addData("State", "Turning");
-                sleep(TURN_TIME);
+                long randomTime = (long) (TURN_BASE_TIME + Math.random()*MAX_RANDOM_TIME);
+                telemetry.addData("Turn Time", randomTime);
+                sleep(randomTime);
             } else {
                 //Set the motors to drive forward at power defined in FORWARD_POWER
                 frank.portMotor.setPower(FORWARD_POWER);
