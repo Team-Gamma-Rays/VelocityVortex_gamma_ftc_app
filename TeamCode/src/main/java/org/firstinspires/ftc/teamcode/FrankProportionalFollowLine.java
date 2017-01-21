@@ -40,15 +40,10 @@ public class FrankProportionalFollowLine extends LinearOpMode {
         telemetry.update();
 
         // Wait for the game to start (driver presses PLAY)
-        // Abort this loop when Stop is Requested.
-        // THis loop displays values recieved from the ODS sensor on the driver station phone.
-        while (isStarted() && !isStopRequested()) {
-            // Display the light level while we are waiting to start
-            telemetry.addData("Light Level", lightSensor.getLightDetected());
-            telemetry.update();
-        }
+        waitForStart();
 
-        while (isStarted() && !isStopRequested()) {
+        // THis loop displays values recieved from the ODS sensor on the driver station phone.
+        while (true) {
             correction = (PERFECT_LIGHT_VALUE - lightSensor.getLightDetected());
 
             //Sets the powers so they are no less than MOTOR_BASE_POWER and apply to correction
@@ -63,6 +58,10 @@ public class FrankProportionalFollowLine extends LinearOpMode {
             //Sets the powers to the motors
             frank.portMotor.setPower(portPower);
             frank.stbdMotor.setPower(stbdPower);
+
+            // Display the light level while we are waiting to start
+            telemetry.addData("Light Level", lightSensor.getLightDetected());
+            telemetry.update();
         }
 
     }
