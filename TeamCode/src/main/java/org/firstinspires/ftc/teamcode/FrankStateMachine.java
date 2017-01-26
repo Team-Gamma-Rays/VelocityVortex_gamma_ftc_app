@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by owner on 1/21/2017.
  */
 
-//@Disabled
+@Disabled
 @Autonomous(name="Frank: State Machine", group="Frank")
 public class FrankStateMachine extends OpMode{
 
@@ -58,7 +58,7 @@ public class FrankStateMachine extends OpMode{
     //drivingREV -> Driving in Reverse
     //turningLeft -> Turning Left
     //turningRight -> turningRight
-    enum State {drivingFWD1, drivingFWD2, drivingFWD3, drivingREV, turningLeft, turningRight, resting1, resting2, followingLine, pushingButton, done};
+    enum State {drivingFWD1, drivingFWD2, drivingFWD3, drivingREV, turningLeft, turningRight, resting1, resting2, followingLine, pushingButton, done}
     State state;
 
     @Override
@@ -114,7 +114,7 @@ public class FrankStateMachine extends OpMode{
 //                    state = State.resting1;
 //                    time.reset();
 //                }
-                this.fwd(1.4, State.resting1);
+//                this.fwd(1.4, State.resting1);
                 telemetry.addData("drivingFWD1", "End");
                 break;
             case drivingFWD2:
@@ -184,7 +184,7 @@ public class FrankStateMachine extends OpMode{
                 telemetry.addData("followingLine", "Start");
                 frank.portMotor.setPower(portLinePower);
                 frank.stbdMotor.setPower(stbdLinePower);
-                if (readyToPress == true) {
+                if (readyToPress) {
                     state = State.resting2;
                     time.reset();
                 }
