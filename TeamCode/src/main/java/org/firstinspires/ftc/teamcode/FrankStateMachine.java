@@ -114,7 +114,7 @@ public class FrankStateMachine extends OpMode{
 //                    state = State.resting1;
 //                    time.reset();
 //                }
-//                this.fwd(1.4, State.resting1);
+                this.fwd(1.4, State.resting1);
                 telemetry.addData("drivingFWD1", "End");
                 break;
             case drivingFWD2:
