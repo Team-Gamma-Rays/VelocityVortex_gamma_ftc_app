@@ -17,7 +17,7 @@ public class FrankProportionalFollowLine extends LinearOpMode {
     Robot         frank   = new Robot();   // Use Frank's hardware
 
     double portPower, stbdPower, correction;
-    final double PERFECT_LIGHT_VALUE = 0.5;
+    final double PERFECT_LIGHT_VALUE = 0.2;
     final double MOTOR_BASE_POWER = -0.075;
     OpticalDistanceSensor lightSensor;   // Alternative MR ODS sensor
 
@@ -43,8 +43,12 @@ public class FrankProportionalFollowLine extends LinearOpMode {
         waitForStart();
 
         // This loop displays values recieved from the ODS sensor on the driver station phone.
-        while (true) {
+        while (this.opModeIsActive()) {
             correction = (PERFECT_LIGHT_VALUE - lightSensor.getLightDetected());
+
+            if (Math.abs(correction) <= 0.05 ) {
+                correction = 0;
+            }
 
             //Sets the powers so they are no less than MOTOR_BASE_POWER and apply to correction
             if (correction <= 0) {
@@ -62,6 +66,7 @@ public class FrankProportionalFollowLine extends LinearOpMode {
             // Display the light level while we are waiting to start
             telemetry.addData("Light Level", lightSensor.getLightDetected());
             telemetry.update();
+            idle();
         }
 
     }
