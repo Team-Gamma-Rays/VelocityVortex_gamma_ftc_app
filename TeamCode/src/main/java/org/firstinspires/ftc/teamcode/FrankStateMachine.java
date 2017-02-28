@@ -114,7 +114,7 @@ public class FrankStateMachine extends OpMode{
 //                    state = State.resting1;
 //                    time.reset();
 //                }
-                this.fwd(1.4, State.resting1);
+                this.fwd(0.1, State.resting1);
                 telemetry.addData("drivingFWD1", "End");
                 break;
             case drivingFWD2:
@@ -125,7 +125,7 @@ public class FrankStateMachine extends OpMode{
 //                    state = State.followingLine;
 //                    time.reset();
 //                }
-                this.fwd(0.5, State.followingLine);
+                this.fwd(0.1, State.followingLine);
                 telemetry.addData("drivingFWD2", "End");
                 break;
             case drivingFWD3:
@@ -143,7 +143,7 @@ public class FrankStateMachine extends OpMode{
                 telemetry.addData("drivingREV", "Start");
                 frank.portMotor.setPower(-FORWARD_POWER);
                 frank.stbdMotor.setPower(-FORWARD_POWER);
-                if  (currentTime > 0.5) {
+                if  (currentTime > 0.1) {
                     state = State.done;
                     time.reset();
                 }
@@ -153,7 +153,7 @@ public class FrankStateMachine extends OpMode{
                 telemetry.addData("turningRight", "Start");
                 frank.portMotor.setPower(-TURNING_POWER);
                 frank.stbdMotor.setPower(TURNING_POWER);
-                if (currentTime > 0.5) {
+                if (currentTime > 0.1) {
                     state = State.drivingFWD2;
                     time.reset();
                 }
@@ -163,7 +163,7 @@ public class FrankStateMachine extends OpMode{
                 telemetry.addData("resting1", "Start");
                 frank.portMotor.setPower(0);
                 frank.stbdMotor.setPower(0);
-                if (currentTime > 1) {
+                if (currentTime > 0.1) {
                     state = State.turningRight;
                     time.reset();
                 }
@@ -173,7 +173,7 @@ public class FrankStateMachine extends OpMode{
                 telemetry.addData("resting2", "Start");
                 frank.portMotor.setPower(0);
                 frank.stbdMotor.setPower(0);
-                if (currentTime > 0.5) {
+                if (currentTime > 0.1) {
                     state = State.drivingFWD3;
                     time.reset();
                     readyToPress = false;
