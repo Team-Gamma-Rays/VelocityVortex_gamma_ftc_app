@@ -8,6 +8,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
  * Created by owner on 1/21/2017.
+ *
+ * Frank State Machine with line follower component removed.
  */
 
 //@Disabled
