@@ -33,6 +33,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
@@ -52,7 +53,7 @@ import static java.lang.Thread.sleep;
  */
 
 @TeleOp(name = "Frank Tank: competition funz", group = "Frank")
-
+@Disabled
 public class FrankTeleOpCompetition extends OpMode {
 
     /* Declare OpMode members. */

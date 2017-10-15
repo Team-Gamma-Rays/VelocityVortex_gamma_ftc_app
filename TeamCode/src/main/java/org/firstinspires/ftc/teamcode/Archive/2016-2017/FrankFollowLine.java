@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
@@ -14,6 +15,7 @@ import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 //This OpMode will shimmy the robot back and forth, for  a smoother driving experience, try the method proposed in the Modern Robotics ODS Video that uses a gradient value.
 
 @Autonomous(name = "Frank: Line Follower", group = "Frank")
+@Disabled
 public class FrankFollowLine extends OpMode {
 
     /* Declare OpMode members. */

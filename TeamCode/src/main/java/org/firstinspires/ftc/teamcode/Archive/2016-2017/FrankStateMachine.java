@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by owner on 1/21/2017.
  */
 
-//@Disabled
+@Disabled
 @Autonomous(name="Frank: State Machine", group="Frank")
 public class FrankStateMachine extends OpMode{
 

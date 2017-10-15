@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Frank State Machine with line follower component removed.
  */
 
-//@Disabled
+@Disabled
 @Autonomous(name="Frank: State Machine NO LINE FOLLOWER", group="Frank")
 public class FrankStateMachine_no_linefollower extends OpMode{
 

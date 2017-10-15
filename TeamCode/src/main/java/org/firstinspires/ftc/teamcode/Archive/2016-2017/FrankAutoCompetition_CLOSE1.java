@@ -58,6 +58,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 @Autonomous(name="Frank: Auto competition CLOSE TO RAMP", group="Frank")
+@Disabled
 public class FrankAutoCompetition_CLOSE1 extends LinearOpMode {
 
     /* Declare OpMode members. */

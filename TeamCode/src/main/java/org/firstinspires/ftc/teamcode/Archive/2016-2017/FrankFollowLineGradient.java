@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 
@@ -11,6 +12,7 @@ import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 //Assumes that the sensor is mounted on the left side of the robot (in our case on the "front", or fork side), placing the robot on the right side of the line.
 
 @Autonomous(name = "Frank: Line Follower w/ Gradient", group = "Frank")
+@Disabled
 public class FrankFollowLineGradient extends OpMode {
 
     /* Declare OpMode members. */

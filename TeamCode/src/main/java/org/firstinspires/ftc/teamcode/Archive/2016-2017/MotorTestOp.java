@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.util.Range;
  */
 
 @TeleOp(name="Testing: Motor Controllers", group="Testing")
-//@Disabled
+@Disabled
 public class MotorTestOp extends OpMode{
 
     /* Declare OpMode members. */

@@ -11,6 +11,7 @@ import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
  */
 
 @Autonomous(name="Frank: Proportional Line Follower", group="Frank")
+@Disabled
 public class FrankProportionalFollowLine extends LinearOpMode {
 
     /* Declare OpMode members. */

@@ -59,7 +59,7 @@ import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
  */
 
 @Autonomous(name="Frank: Auto Drive To Line", group="Frank")
-//@Disabled
+@Disabled
 public class FrankAutoDriveToLine_Linear extends LinearOpMode {
 
     /* Declare OpMode members. */

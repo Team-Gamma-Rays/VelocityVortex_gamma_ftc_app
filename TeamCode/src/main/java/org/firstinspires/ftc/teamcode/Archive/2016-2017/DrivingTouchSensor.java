@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.TouchSensor;
@@ -11,7 +12,7 @@ import com.qualcomm.robotcore.hardware.TouchSensor;
  * Created by owner on 1/19/2017.
  */
 @TeleOp(name = "Frank Finger: TouchSensor", group = "Frank")
-
+@Disabled
 public class DrivingTouchSensor extends OpMode {
 
     /* Declare OpMode members. */
