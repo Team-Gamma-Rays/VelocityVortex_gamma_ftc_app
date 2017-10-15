@@ -56,7 +56,7 @@ public class TeleOp17_18 extends OpMode
 {
     // Declare OpMode members.
     /* Declare OpMode members. */
-    Hardware17_18 robot = new Hardware17_18(); // use the class created to define Frank's hardware
+    org.firstinspires.ftc.teamcode.Hardware17_18 robot = new org.firstinspires.ftc.teamcode.Hardware17_18(); // use the class created to define Frank's hardware
     private ElapsedTime runtime = new ElapsedTime();
 
     /*
