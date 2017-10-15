@@ -1,6 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 import com.qualcomm.robotcore.hardware.TouchSensor;
@@ -17,7 +20,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class FrankStateMachine_no_linefollower extends OpMode{
 
     /* Declare OpMode members. */
-    Robot         frank   = new Robot();   // Use Frank's hardware
+    org.firstinspires.ftc.teamcode.Robot         frank   = new org.firstinspires.ftc.teamcode.Robot();   // Use Frank's hardware
 
     static final double FORWARD_POWER = -0.2;
     static final double TURNING_POWER = -0.1;
