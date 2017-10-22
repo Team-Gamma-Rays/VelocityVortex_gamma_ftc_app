@@ -27,7 +27,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Hardware;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -57,8 +57,8 @@ public class Hardware17_18
     /* Public OpMode members. */
     public DcMotor  frontLeft   = null;
     public DcMotor  frontRight  = null;
-    public DcMotor  backLeft = null;
-    public DcMotor  backRight = null;
+    public DcMotor  backLeft    = null;
+    public DcMotor  backRight   = null;
 
     /* Local OpMode members. */
     HardwareMap hwMap  = null;
