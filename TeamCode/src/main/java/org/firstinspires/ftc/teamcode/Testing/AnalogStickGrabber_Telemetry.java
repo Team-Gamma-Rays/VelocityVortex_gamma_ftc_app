@@ -27,7 +27,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Testing;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -48,6 +48,12 @@ import java.lang.Math.*;
  *
  * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
+ */
+
+/**
+ * NOTE: This OpMode is currently only able to receive values from 1 gamepad.
+ * Functionality to use 2 gamepads, while still being able to function properly with only 1 connected
+ * should be added at some point.
  */
 
 @TeleOp(name="Analog Stick Grabber w/ Telemetry", group="Testing")
@@ -85,7 +91,7 @@ public class AnalogStickGrabber_Telemetry extends OpMode
      */
     @Override
     public void loop() {
-        // Setup a variable for each drive wheel to save power level for telemetry
+        // Setup variables to store processed analog stick values
         double leftX_1;
         double leftY_1;
         double rightX_1;
@@ -93,25 +99,30 @@ public class AnalogStickGrabber_Telemetry extends OpMode
         double leftDistance;
         double rightDistance;
 
-        leftX_1 = gamepad1.left_stick_x;
-        leftY_1  =  gamepad1.left_stick_y;
+        // Assigns values returned from gamepad to variables
+        // Currently, no processing is applied
+        leftX_1  = gamepad1.left_stick_x;
+        leftY_1  = gamepad1.left_stick_y;
         rightX_1 = gamepad1.right_stick_x;
         rightY_1 = gamepad1.right_stick_y;
 
-        leftDistance = Math.sqrt(Math.pow(leftX_1,2)+Math.pow(leftY_1,2)) ;
+        // Uses sqrt(x^2 + y^2) to calculate the distance of each analog stick location from (0,0)
+        leftDistance  = Math.sqrt(Math.pow(leftX_1,2)+Math.pow(leftY_1,2)) ;
         rightDistance = Math.sqrt(Math.pow(rightX_1,2)+Math.pow(rightY_1,2)) ;
 
-        // Show unprocessed data retrieved from controllers
+        // Send unprocessed data retrieved from controllers to telemetry display
         telemetry.addData("Gamepad 1", "Left - Raw X: " + gamepad1.left_stick_x);
-        telemetry.addData("Gamepad 1", "Left - Raw Y:", + gamepad1.left_stick_y);
+        telemetry.addData("Gamepad 1", "Left - Raw Y: ", + gamepad1.left_stick_y);
         telemetry.addData("Gamepad 1", "Right - Raw X: " + gamepad1.right_stick_x);
-        telemetry.addData("Gamepad 1", "Right - Raw Y:", + gamepad1.right_stick_y);
+        telemetry.addData("Gamepad 1", "Right - Raw Y: ", + gamepad1.right_stick_y);
+        // Send processed analog stick data to telemetry display
         telemetry.addData("Gamepad 1", "Left - Processed X: " + leftX_1) ;
-        telemetry.addData("Gamepad 1", "Left - Processed Y:", + leftY_1) ;
+        telemetry.addData("Gamepad 1", "Left - Processed Y: ", + leftY_1) ;
         telemetry.addData("Gamepad 1", "Right - Processed X: " + rightX_1) ;
-        telemetry.addData("Gamepad 1", "Right - Processed Y:", + rightY_1) ;
+        telemetry.addData("Gamepad 1", "Right - Processed Y: ", + rightY_1) ;
+        // Send analog stick distance values to telemetry display
         telemetry.addData("Gamepad 1", "Left - Distance: " + leftDistance) ;
-        telemetry.addData("Gamepad 1", "Right - Distance: " + leftDistance) ;
+        telemetry.addData("Gamepad 1", "Right - Distance: " + rightDistance) ;
     }
 
     /*
