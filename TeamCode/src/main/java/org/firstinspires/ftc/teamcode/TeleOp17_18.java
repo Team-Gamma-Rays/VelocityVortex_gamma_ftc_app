@@ -27,7 +27,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -35,6 +35,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
+
+import org.firstinspires.ftc.teamcode.Hardware.Hardware17_18;
 
 /**
  * This file contains an example of an iterative (Non-Linear) "OpMode".
@@ -56,7 +58,7 @@ public class TeleOp17_18 extends OpMode
 {
     // Declare OpMode members.
     /* Declare OpMode members. */
-    org.firstinspires.ftc.teamcode.Hardware17_18 robot = new org.firstinspires.ftc.teamcode.Hardware17_18(); // use the class created to define Frank's hardware
+    Hardware17_18 robot = new Hardware17_18(); // use the class created to define the robot's hardware
     private ElapsedTime runtime = new ElapsedTime();
 
     /*
@@ -106,13 +108,14 @@ public class TeleOp17_18 extends OpMode
         // X-axis of left stick controls Rotation / Speed of Rotation
         // X-axis and Y-axis of right stick control movement direction and speed
 
-        //Version 1 - puts gamepad values in separate variables
+        //Puts gamepad values in separate variables
         double rotation = gamepad1.left_stick_x;
         double left_right = gamepad1.right_stick_x;
         double forward_backward = gamepad1.right_stick_y;
+        //Calculates power to send to drive motors
         frontLeftPower    = Range.clip(forward_backward + left_right + rotation, -1.0, 1.0) ;
         frontRightPower   = Range.clip(-forward_backward + left_right + rotation, -1.0, 1.0) ;
-        backLeftPower  = Range.clip(forward_backward - left_right + rotation, -1.0, 1.0) ;
+        backLeftPower     = Range.clip(forward_backward - left_right + rotation, -1.0, 1.0) ;
         backRightPower    = Range.clip(-forward_backward - left_right + rotation, -1.0, 1.0) ;
 
         // Send calculated power to wheels
