@@ -52,7 +52,7 @@ import org.firstinspires.ftc.teamcode.Hardware.Hardware17_18;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Main TeleOp", group="TeleOp")
+@TeleOp(name="Dr. Jones TeleOp", group="TeleOp")
 //@Disabled
 public class TeleOp17_18 extends OpMode
 {
@@ -113,10 +113,23 @@ public class TeleOp17_18 extends OpMode
         double left_right = gamepad1.right_stick_x;
         double forward_backward = gamepad1.right_stick_y;
         //Calculates power to send to drive motors
-        frontLeftPower    = Range.clip(forward_backward + left_right + rotation, -1.0, 1.0) ;
-        frontRightPower   = Range.clip(-forward_backward + left_right + rotation, -1.0, 1.0) ;
-        backLeftPower     = Range.clip(forward_backward - left_right + rotation, -1.0, 1.0) ;
-        backRightPower    = Range.clip(-forward_backward - left_right + rotation, -1.0, 1.0) ;
+        frontLeftPower    = forward_backward + left_right + rotation ;
+        frontRightPower   = -forward_backward + left_right + rotation ;
+        backLeftPower     = forward_backward - left_right + rotation ;
+        backRightPower    = -forward_backward - left_right + rotation ;
+
+        //From GearsInc FTCVuforiaDemo
+        // normalize all motor speeds so no values exceeds 100%.
+        double max = Math.max(Math.abs(frontLeftPower), Math.abs(frontRightPower));
+        max = Math.max(max, Math.abs(backLeftPower));
+        max = Math.max(max, Math.abs(backRightPower));
+        if (max > 1.0)
+        {
+            frontLeftPower /= max;
+            frontRightPower /= max;
+            backLeftPower /= max;
+            backRightPower /= max;
+        }
 
         // Send calculated power to wheels
         robot.frontLeft.setPower(frontLeftPower);
