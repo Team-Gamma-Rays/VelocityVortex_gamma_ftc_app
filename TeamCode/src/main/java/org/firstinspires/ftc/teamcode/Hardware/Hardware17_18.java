@@ -30,6 +30,7 @@
 package org.firstinspires.ftc.teamcode.Hardware;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -78,6 +79,13 @@ public class Hardware17_18
         frontRight = hwMap.get(DcMotor.class, "front_right_drive");
         backLeft = hwMap.get(DcMotor.class, "back_left_drive");
         backRight = hwMap.get(DcMotor.class, "back_right_drive");
+
+        frontLeft.setDirection(DcMotor.Direction.FORWARD);
+        frontRight.setDirection(DcMotor.Direction.FORWARD);
+        backLeft.setDirection(DcMotor.Direction.FORWARD);
+        backRight.setDirection(DcMotor.Direction.FORWARD);
+
+
 
         // Set all motors to zero power
         frontLeft.setPower(0);
