@@ -56,7 +56,7 @@ import java.lang.Math.*;
  * should be added at some point.
  */
 
-@TeleOp(name="Analog Stick Grabber w/ Telemetry", group="Testing")
+@TeleOp(name="Analog Stick Grabber with Telemetry", group="Testing")
 //@Disabled
 public class AnalogStickGrabber_Telemetry extends OpMode
 {
