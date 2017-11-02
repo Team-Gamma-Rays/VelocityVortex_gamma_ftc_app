@@ -109,9 +109,9 @@ public class TeleOp17_18 extends OpMode
         // X-axis and Y-axis of right stick control movement direction and speed
 
         //Puts gamepad values in separate variables
-        double rotation = gamepad1.left_stick_x;
-        double left_right = gamepad1.right_stick_x;
-        double forward_backward = gamepad1.right_stick_y;
+        double rotation = gamepad1.right_stick_x;
+        double left_right = gamepad1.left_stick_x;
+        double forward_backward = gamepad1.left_stick_y;
         //Calculates power to send to drive motors
         frontLeftPower    = forward_backward + left_right + rotation ;
         frontRightPower   = -forward_backward + left_right + rotation ;
