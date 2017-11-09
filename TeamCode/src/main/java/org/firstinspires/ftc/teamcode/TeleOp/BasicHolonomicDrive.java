@@ -51,7 +51,7 @@ import com.qualcomm.robotcore.util.Range;
  */
 
 @TeleOp(name="Basic: Holonomic Drive", group="TeleOp")
-//@Disabled
+@Disabled
 public class BasicHolonomicDrive extends OpMode
 {
     // Declare OpMode members.

@@ -57,7 +57,7 @@ import java.lang.Math.*;
  */
 
 @TeleOp(name="Analog Stick Grabber with Telemetry", group="Testing")
-//@Disabled
+@Disabled
 public class AnalogStickGrabber_Telemetry extends OpMode
 {
     // Declare OpMode members.
