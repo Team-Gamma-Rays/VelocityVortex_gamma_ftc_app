@@ -36,6 +36,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
+import org.firstinspires.ftc.teamcode.Auto.Robot_HoloDrive;
 import org.firstinspires.ftc.teamcode.Hardware.Hardware17_18;
 
 /**
@@ -60,7 +61,7 @@ public class TeleOp17_18 extends OpMode
     /* Declare OpMode members. */
     Hardware17_18 robot = new Hardware17_18(); // use the class created to define the robot's hardware
     private ElapsedTime runtime = new ElapsedTime();
-
+    Robot_HoloDrive drive=new Robot_HoloDrive();
     /*
      * Code to run ONCE when the driver hits INIT
      */
@@ -109,8 +110,8 @@ public class TeleOp17_18 extends OpMode
         // X-axis and Y-axis of right stick control movement direction and speed
 
         //Puts gamepad values in separate variables
-        double rotation = gamepad1.right_stick_x;
-        double left_right = gamepad1.left_stick_x;
+        double rotation = -gamepad1.right_stick_x;
+        double left_right = -gamepad1.left_stick_x;
         double forward_backward = gamepad1.left_stick_y;
         //Calculates power to send to drive motors
         frontLeftPower    = forward_backward + left_right + rotation ;
@@ -129,6 +130,20 @@ public class TeleOp17_18 extends OpMode
             frontRightPower /= max;
             backLeftPower /= max;
             backRightPower /= max;
+        }
+
+        // D - pad Control
+        if (gamepad1.dpad_up) {
+            drive.moveRobot(0.5,0,0);
+        }
+        else if (gamepad1.dpad_down) {
+            drive.moveRobot(-0.5,0,0);
+        }
+        else if (gamepad1.dpad_left){
+            drive.moveRobot(0,-0.5,0);
+        }
+        else if (gamepad1.dpad_right) {
+            drive.moveRobot(0,0.5,0);
         }
 
         // Send calculated power to wheels
