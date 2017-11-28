@@ -61,7 +61,7 @@ public class TeleOp17_18 extends OpMode
     /* Declare OpMode members. */
     Hardware17_18 robot = new Hardware17_18(); // use the class created to define the robot's hardware
     private ElapsedTime runtime = new ElapsedTime();
-    Robot_HoloDrive drive=new Robot_HoloDrive();
+    Robot_HoloDrive drive = new Robot_HoloDrive();
     /*
      * Code to run ONCE when the driver hits INIT
      */
