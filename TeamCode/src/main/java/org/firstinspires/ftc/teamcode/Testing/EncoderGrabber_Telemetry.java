@@ -32,6 +32,7 @@ package org.firstinspires.ftc.teamcode.Testing;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
@@ -55,18 +56,22 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @TeleOp(name="Encoder Grabber with Telemetry", group="Testing")
-@Disabled
+//@Disabled
 public class EncoderGrabber_Telemetry extends OpMode
 {
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
 
+    DcMotor motor_1;
     /*
      * Code to run ONCE when the driver hits INIT
      */
     @Override
     public void init() {
-        telemetry.addData("Analog Stick Grabber", "v1.0");
+        motor_1 = hardwareMap.dcMotor.get("motor_1");
+        motor_1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motor_1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        telemetry.addData("Encoder Grabber", "v1.0");
     }
 
     /*
@@ -90,10 +95,10 @@ public class EncoderGrabber_Telemetry extends OpMode
     @Override
     public void loop() {
         // Setup variables to store encoder values
-        double encoder;
+        int position = motor_1.getCurrentPosition();
 
-        // Send unprocessed data retrieved from controllers to telemetry display
-        telemetry.addData("Gamepad 1", "Left - Raw X: " + gamepad1.left_stick_x);
+        // Send data retrieved from encoder to telemetry display
+        telemetry.addData("motor_1 Encoder Position: ", position);
     }
 
     /*
