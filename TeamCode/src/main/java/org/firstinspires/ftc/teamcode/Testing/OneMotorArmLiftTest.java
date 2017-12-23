@@ -80,11 +80,7 @@ public class OneMotorArmLiftTest extends LinearOpMode {
 
         armLift = hardwareMap.get(DcMotor.class, "arm_lift_motor");
 
-        double armLiftPos; //Define variables to store positions of motors.
-        final double armLiftHome  = 0.0; //Set starting position for motor
         final double armLiftPower    = 0.2; //Set power to move motor
-
-        //leftClaw.setPosition(leftClawHome);
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Say", "Hello Driver");    //
@@ -96,15 +92,9 @@ public class OneMotorArmLiftTest extends LinearOpMode {
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
-            /*
-            //Assigns servo positions to variables.
-            leftClawPos  = leftClaw.getPosition();
-            rightClawPos = rightClaw.getPosition();
-            */
-
             if (gamepad1.left_bumper)
                 armLift.setPower(-armLiftPower);
-            else if (gamepad1.dpad_right)
+            else if (gamepad1.right_bumper)
                 armLift.setPower(armLiftPower);
 
             //Send telemetry messages corresponding to servo positions.
