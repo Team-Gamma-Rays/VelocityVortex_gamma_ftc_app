@@ -30,7 +30,6 @@
 package org.firstinspires.ftc.teamcode.Hardware;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -53,19 +52,12 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  *   As the arm servo approaches 0, the arm position moves up (away from the floor).
  *   As the claw servo approaches 0, the claw opens up (drops the game element).
  */
-public class Hardware17_18
+public class Arm_Hardware17_18
 {
     /* Public OpMode members. */
-    public DcMotor  frontLeft   = null;
-    public DcMotor  frontRight  = null;
-    public DcMotor  backLeft    = null;
-    public DcMotor  backRight   = null;
     public DcMotor  armLift     = null;
     public Servo    leftClaw    = null;
     public Servo    rightClaw   = null;
-
-    public double leftClawPos; //Define variables to store positions of servos.
-    public double rightClawPos;
 
     public static final double leftClawHome  = 0.0; //Set starting position for servos
     public static final double rightClawHome = 0.0;
@@ -79,7 +71,7 @@ public class Hardware17_18
     private ElapsedTime period  = new ElapsedTime();
 
     /* Constructor */
-    public Hardware17_18() {
+    public Arm_Hardware17_18() {
     }
 
     /* Initialize standard Hardware interfaces */
@@ -88,29 +80,10 @@ public class Hardware17_18
         hwMap = ahwMap;
 
         // Define and Initialize Motors
-        frontLeft  = hwMap.get(DcMotor.class, "front_left_drive");
-        frontRight = hwMap.get(DcMotor.class, "front_right_drive");
-        backLeft   = hwMap.get(DcMotor.class, "back_left_drive");
-        backRight  = hwMap.get(DcMotor.class, "back_right_drive");
         armLift    = hwMap.get(DcMotor.class, "arm_lift_motor");
-
-        frontLeft.setDirection(DcMotor.Direction.FORWARD);
-        frontRight.setDirection(DcMotor.Direction.FORWARD);
-        backLeft.setDirection(DcMotor.Direction.FORWARD);
-        backRight.setDirection(DcMotor.Direction.FORWARD);
-
-        // Set all motors to zero power
-        frontLeft.setPower(0);
-        frontRight.setPower(0);
-        backLeft.setPower(0);
-        backRight.setPower(0);
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
-        frontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        frontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        backLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        backRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         //Define and initialize servos
         leftClaw  = hwMap.get(Servo.class, "left_claw");
