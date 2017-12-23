@@ -54,7 +54,7 @@ import org.firstinspires.ftc.teamcode.Hardware.Hardware17_18;
  */
 
 @TeleOp(name="Dr. Jones TeleOp", group="TeleOp")
-//@Disabled
+@Disabled
 public class TeleOp17_18 extends OpMode
 {
     // Declare OpMode members.
