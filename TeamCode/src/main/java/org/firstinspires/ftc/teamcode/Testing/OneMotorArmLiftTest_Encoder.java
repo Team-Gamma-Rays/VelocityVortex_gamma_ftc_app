@@ -66,7 +66,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Claw Servo Test", group="Testing")
+@TeleOp(name="Arm Lift Test with Encoder", group="Testing")
 //@Disabled
 public class OneMotorArmLiftTest_Encoder extends LinearOpMode {
 
