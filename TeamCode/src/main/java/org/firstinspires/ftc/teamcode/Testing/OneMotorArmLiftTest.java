@@ -41,17 +41,6 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
  * ADDED BY GAMMA RAYS:
- * This OpMode mode is based upon the PushbotTeleopPOV_Linear class.
- * It uses the common HardwareOurRobot hardware class to define the devices on the robot.
- *
- * This OpMode is designed to test the servos in Sprocket's(our team's robot) original arm configuration.
- * It can be used to determine the optimal servo position values for initial positions
- * and preset servo movements in both Teleop and Autonomous OpModes.
- * In this mode:
- * The X and Y axes of the Left stick move the Horizontal and Vertical arm servos on the Port side of the robot respectively.
- * The Right stick performs the same function, but for arm servos on the Starboard side.
- *
- * All servo positions are sent to the telemetry display on the Driver Station phone.
  */
 
 /**
@@ -80,7 +69,7 @@ public class OneMotorArmLiftTest extends LinearOpMode {
 
         armLift = hardwareMap.get(DcMotor.class, "arm_lift_motor");
 
-        final double armLiftPower    = 0.2; //Set power to move motor
+        final double ARM_LIFT_POWER = 0.2; //Set power to move motor
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Say", "Hello Driver");    //
@@ -93,12 +82,12 @@ public class OneMotorArmLiftTest extends LinearOpMode {
         while (opModeIsActive()) {
 
             if (gamepad1.left_bumper)
-                armLift.setPower(-armLiftPower);
+                armLift.setPower(-ARM_LIFT_POWER);
             else if (gamepad1.right_bumper)
-                armLift.setPower(armLiftPower);
+                armLift.setPower(ARM_LIFT_POWER);
 
             //Send telemetry messages corresponding to servo positions.
-            telemetry.addData("armLiftPower:", "%.2f", armLift);
+            telemetry.addData("ARM_LIFT_POWER:", "%.2f", armLift);
             telemetry.update();
         }
     }

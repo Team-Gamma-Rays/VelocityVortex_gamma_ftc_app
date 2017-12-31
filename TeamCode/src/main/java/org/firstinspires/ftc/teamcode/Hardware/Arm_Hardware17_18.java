@@ -59,12 +59,12 @@ public class Arm_Hardware17_18
     public Servo    leftClaw    = null;
     public Servo    rightClaw   = null;
 
-    public static final double leftClawHome  = 0.0; //Set starting position for servos
-    public static final double rightClawHome = 0.0;
-    public static final double servoDelta    = 0.1; //Set amount to move servos
+    public static final double LEFT_CLAW_HOME = 0.0; //Set starting position for servos
+    public static final double RIGHT_CLAW_HOME = 0.0;
+    public static final double SERVO_DELTA = 0.1; //Set amount to move servos
 
-    public static final double armLiftPower    = 0.2; //Set power to move motor
-    public static final int    armLiftHome     = 0; //Encoder value used to move arm to a default init position
+    public static final double ARM_LIFT_POWER = 0.2; //Set power to move motor
+    public static final int    ARM_LIFT_HOME  = 0; //Encoder value used to move arm to a default init position
 
     /* Local OpMode members. */
     HardwareMap hwMap  = null;

@@ -38,17 +38,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 /**
  * ADDED BY GAMMA RAYS:
- * This OpMode mode is based upon the PushbotTeleopPOV_Linear class.
- * It uses the common HardwareOurRobot hardware class to define the devices on the robot.
- *
- * This OpMode is designed to test the servos in Sprocket's(our team's robot) original arm configuration.
- * It can be used to determine the optimal servo position values for initial positions
- * and preset servo movements in both Teleop and Autonomous OpModes.
- * In this mode:
- * The X and Y axes of the Left stick move the Horizontal and Vertical arm servos on the Port side of the robot respectively.
- * The Right stick performs the same function, but for arm servos on the Starboard side.
- *
- * All servo positions are sent to the telemetry display on the Driver Station phone.
  */
 
 /**
@@ -76,15 +65,15 @@ public class OneMotorArmLiftTest_Encoder extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 
         armLift = hardwareMap.get(DcMotor.class, "arm_lift_motor");
-        final double armLiftPower    = 0.2; //Set power to move motor
-        final int    armLiftHome     = 0; //Encoder value used to move arm to a default init position
+        final double ARM_LIFT_POWER    = 0.2; //Set power to move motor
+        final int    ARM_LIFT_HOME     = 0; //Encoder value used to move arm to a default init position
 
         //Init for arm lift motor
         armLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         armLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         armLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        armLift.setTargetPosition(armLiftHome);
-        armLift.setPower(armLiftPower);
+        armLift.setTargetPosition(ARM_LIFT_HOME);
+        armLift.setPower(ARM_LIFT_POWER);
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Say", "Hello Driver");    //
@@ -99,12 +88,12 @@ public class OneMotorArmLiftTest_Encoder extends LinearOpMode {
             int position = armLift.getCurrentPosition();
 
             if (gamepad1.left_bumper)
-                armLift.setPower(-armLiftPower);
+                armLift.setPower(-ARM_LIFT_POWER);
             else if (gamepad1.right_bumper)
-                armLift.setPower(armLiftPower);
+                armLift.setPower(ARM_LIFT_POWER);
 
             //Send telemetry messages corresponding to servo positions.
-            telemetry.addData("armLiftPower: ", "%.2f", armLift);
+            telemetry.addData("ARM_LIFT_POWER: ", "%.2f", armLift);
             telemetry.addData("armLift Encoder Position: ", position);
             telemetry.update();
         }

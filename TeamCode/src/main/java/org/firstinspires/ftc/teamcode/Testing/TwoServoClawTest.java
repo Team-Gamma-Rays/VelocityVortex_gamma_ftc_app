@@ -41,16 +41,6 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 /**
  * ADDED BY GAMMA RAYS:
  * This OpMode mode is based upon the PushbotTeleopPOV_Linear class.
- * It uses the common HardwareOurRobot hardware class to define the devices on the robot.
- *
- * This OpMode is designed to test the servos in Sprocket's(our team's robot) original arm configuration.
- * It can be used to determine the optimal servo position values for initial positions
- * and preset servo movements in both Teleop and Autonomous OpModes.
- * In this mode:
- * The X and Y axes of the Left stick move the Horizontal and Vertical arm servos on the Port side of the robot respectively.
- * The Right stick performs the same function, but for arm servos on the Starboard side.
- *
- * All servo positions are sent to the telemetry display on the Driver Station phone.
  */
 
 /**
@@ -84,12 +74,12 @@ public class TwoServoClawTest extends LinearOpMode {
         double leftClawPos; //Define variables to store positions of servos.
         double rightClawPos;
 
-        final double leftClawHome  = 0.0; //Set starting position for servos
-        final double rightClawHome = 0.0;
-        final double servoDelta    = 0.1; //Set amount to move servos
+        final double LEFT_CLAW_HOME  = 0.0; //Set starting position for servos
+        final double RIGHT_CLAW_HOME = 0.0;
+        final double SERVO_DELTA     = 0.1; //Set amount to move servos
 
-        leftClaw.setPosition(leftClawHome);
-        rightClaw.setPosition(rightClawHome);
+        leftClaw.setPosition(LEFT_CLAW_HOME);
+        rightClaw.setPosition(RIGHT_CLAW_HOME);
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Say", "Hello Driver");    //
@@ -106,14 +96,14 @@ public class TwoServoClawTest extends LinearOpMode {
             rightClawPos = rightClaw.getPosition();
 
             if (gamepad1.dpad_left)
-                leftClaw.setPosition(leftClawPos - servoDelta);
+                leftClaw.setPosition(leftClawPos - SERVO_DELTA);
             else if (gamepad1.dpad_right)
-                leftClaw.setPosition(leftClawPos + servoDelta);
+                leftClaw.setPosition(leftClawPos + SERVO_DELTA);
 
             if (gamepad1.x)
-                rightClaw.setPosition(rightClawPos - servoDelta);
+                rightClaw.setPosition(rightClawPos - SERVO_DELTA);
             else if (gamepad1.b)
-                rightClaw.setPosition(rightClawPos + servoDelta);
+                rightClaw.setPosition(rightClawPos + SERVO_DELTA);
 
             //Send telemetry messages corresponding to servo positions.
             telemetry.addData("leftClaw:", "%.2f", leftClawPos);
