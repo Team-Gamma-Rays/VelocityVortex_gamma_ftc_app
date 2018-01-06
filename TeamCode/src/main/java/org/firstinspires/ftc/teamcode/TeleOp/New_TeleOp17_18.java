@@ -30,12 +30,12 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.Auto.Robot_HoloDrive;
-import org.firstinspires.ftc.teamcode.Hardware.Arm_Hardware17_18;
+import org.firstinspires.ftc.teamcode.Hardware.Hardware17_18;
 
 /**
  * This file contains an example of an iterative (Non-Linear) "OpMode".
@@ -57,8 +57,7 @@ public class New_TeleOp17_18 extends LinearOpMode
 {
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
-    Robot_HoloDrive   drive = new Robot_HoloDrive();
-    Arm_Hardware17_18 arm   = new Arm_Hardware17_18();
+    Robot_HoloDrive drive = new Robot_HoloDrive();
     /*
      * Code to run ONCE when the driver hits INIT
      */
@@ -66,16 +65,6 @@ public class New_TeleOp17_18 extends LinearOpMode
     public void runOpMode() {
         // Initialize the robot and navigation
         drive.initDrive(this);
-
-        arm.leftClaw.setPosition(arm.LEFT_CLAW_HOME);
-        arm.rightClaw.setPosition(arm.RIGHT_CLAW_HOME);
-
-        //Init for arm lift motor
-        arm.armLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        arm.armLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        arm.armLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        arm.armLift.setTargetPosition(arm.ARM_LIFT_HOME);
-        arm.armLift.setPower(arm.ARM_LIFT_POWER);
 
         // Wait for the game to start (driver presses PLAY)
         while (!isStarted()) {
@@ -93,28 +82,16 @@ public class New_TeleOp17_18 extends LinearOpMode
             // Drive the robot using the joysticks
             drive.manualDrive();
 
-            //Arm Lift Control
-            arm.armLift.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-            int position = arm.armLift.getCurrentPosition();
-
-            if (gamepad1.left_bumper)
-                arm.armLift.setPower(-arm.ARM_LIFT_POWER);
-            else if (gamepad1.right_bumper)
-                arm.armLift.setPower(arm.ARM_LIFT_POWER);
-
-            //Assigns servo positions to variables.
-            double leftClawPos  = arm.leftClaw.getPosition();
-            double rightClawPos = arm.rightClaw.getPosition();
-
-            if (gamepad1.dpad_left)
-                arm.leftClaw.setPosition(leftClawPos - arm.SERVO_DELTA);
-            else if (gamepad1.dpad_right)
-                arm.leftClaw.setPosition(leftClawPos + arm.SERVO_DELTA);
-
-            if (gamepad1.x)
-                arm.rightClaw.setPosition(rightClawPos - arm.SERVO_DELTA);
-            else if (gamepad1.b)
-                arm.rightClaw.setPosition(rightClawPos + arm.SERVO_DELTA);
+            // D - pad Control
+            if (gamepad1.dpad_up) {
+                drive.moveRobot(0.5, 0, 0);
+            } else if (gamepad1.dpad_down) {
+                drive.moveRobot(-0.5, 0, 0);
+            } else if (gamepad1.dpad_left) {
+                drive.moveRobot(0, -0.5, 0);
+            } else if (gamepad1.dpad_right) {
+                drive.moveRobot(0, 0.5, 0);
+            }
 
             //  Move the robot according to the pre-determined axis motions
             drive.moveRobot();
