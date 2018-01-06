@@ -81,6 +81,17 @@ public class Robot_HoloDrive
         setAxial(myOpMode.gamepad1.left_stick_y);
         setLateral(myOpMode.gamepad1.left_stick_x);
         setYaw(-myOpMode.gamepad1.right_stick_x);
+
+        // D - pad Control
+        if (myOpMode.gamepad1.dpad_up) {
+            moveRobot(0.5, 0, 0);
+        } else if (myOpMode.gamepad1.dpad_down) {
+            moveRobot(-0.5, 0, 0);
+        } else if (myOpMode.gamepad1.dpad_left) {
+            moveRobot(0, -0.5, 0);
+        } else if (myOpMode.gamepad1.dpad_right) {
+            moveRobot(0, 0.5, 0);
+        }
     }
 
 
