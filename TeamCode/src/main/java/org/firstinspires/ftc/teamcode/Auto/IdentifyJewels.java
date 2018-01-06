@@ -22,10 +22,10 @@ public class IdentifyJewels extends LinearOpMode{
     private enum JewelColor {RED, BLUE};
     JewelColor color;
 
-    static final double RED_LOW   = 2.0;
-    static final double RED_HIGH  = 10.0;
-    static final double BLUE_LOW  = 200.0;
-    static final double BLUE_HIGH = 250.0;
+    static final double RED_MIN   = 2.0;
+    static final double RED_MAX   = 10.0;
+    static final double BLUE_MIN  = 200.0;
+    static final double BLUE_MAX  = 250.0;
 
     @Override
     public void runOpMode() {
@@ -56,13 +56,18 @@ public class IdentifyJewels extends LinearOpMode{
 
             double hue = hsvValues[0];
 
-            if (hue >= RED_LOW && hue <= RED_HIGH) {
+            if (hue >= RED_MIN && hue <= RED_MAX) {
                 color = JewelColor.RED;
-            } else if (hue >= BLUE_LOW && hue <= BLUE_HIGH) {
+            } else if (hue >= BLUE_MIN && hue <= BLUE_MAX) {
                 color = JewelColor.BLUE;
             }
 
-            telemetry.addData("Jewel Color", color);
+            telemetry.addData("Jewel Color: ", color);
+            telemetry.addData("Sensor Hue: ", hue);
+            telemetry.addData("Red Min: ", RED_MIN);
+            telemetry.addData("Red Max: ", RED_MAX);
+            telemetry.addData("Blue Min: ", BLUE_MIN);
+            telemetry.addData("Blue Max: ", BLUE_MAX);
 
             // change the background color to match the color detected by the RGB sensor.
             // pass a reference to the hue, saturation, and value array as an argument
