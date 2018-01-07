@@ -97,7 +97,14 @@ public class EncoderGrabber_Telemetry extends OpMode
         // Setup variables to store encoder values
         int position = motor_1.getCurrentPosition();
 
+        motor_1.setPower(gamepad1.left_stick_y);
+
+        if (gamepad1.a) {
+            motor_1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        }
+
         // Send data retrieved from encoder to telemetry display
+        telemetry.addLine("Press A to Reset Encoder");
         telemetry.addData("motor_1 Encoder Position: ", position);
     }
 
