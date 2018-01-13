@@ -32,6 +32,7 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package org.firstinspires.ftc.teamcode.Testing;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -55,18 +56,19 @@ import com.qualcomm.robotcore.hardware.DcMotor;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Arm Lift Test with Encoder", group="Testing")
+@TeleOp(name="Arm Lift with Encoder", group="Testing")
 //@Disabled
 public class OneMotorArmLiftTest_Encoder extends LinearOpMode {
 
-    DcMotor armLift  = null;
+    DcMotor armLift;
+
+    static final double ARM_LIFT_POWER    = 0.3; //Set power to move motor
+    static final int    ARM_LIFT_HOME     = -10; //Encoder value used to move arm to a default init position
 
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() {
 
         armLift = hardwareMap.get(DcMotor.class, "arm_lift_motor");
-        final double ARM_LIFT_POWER    = 0.2; //Set power to move motor
-        final int    ARM_LIFT_HOME     = 0; //Encoder value used to move arm to a default init position
 
         //Init for arm lift motor
         armLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -91,6 +93,8 @@ public class OneMotorArmLiftTest_Encoder extends LinearOpMode {
                 armLift.setPower(-ARM_LIFT_POWER);
             else if (gamepad1.right_bumper)
                 armLift.setPower(ARM_LIFT_POWER);
+            else if (!gamepad1.left_bumper && !gamepad2.right_bumper)
+                armLift.setPower(0);
 
             //Send telemetry messages corresponding to servo positions.
             telemetry.addData("ARM_LIFT_POWER: ", "%.2f", armLift);

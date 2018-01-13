@@ -62,14 +62,14 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 //@Disabled
 public class OneMotorArmLiftTest extends LinearOpMode {
 
-    DcMotor armLift  = null;
+    DcMotor armLift;
+
+    static final double ARM_LIFT_POWER = 0.3; //Set power to move motor
 
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() {
 
         armLift = hardwareMap.get(DcMotor.class, "arm_lift_motor");
-
-        final double ARM_LIFT_POWER = 0.2; //Set power to move motor
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Say", "Hello Driver");    //
@@ -85,9 +85,11 @@ public class OneMotorArmLiftTest extends LinearOpMode {
                 armLift.setPower(-ARM_LIFT_POWER);
             else if (gamepad1.right_bumper)
                 armLift.setPower(ARM_LIFT_POWER);
+            else if (!gamepad1.left_bumper && !gamepad2.right_bumper)
+                armLift.setPower(0);
 
             //Send telemetry messages corresponding to servo positions.
-            telemetry.addData("ARM_LIFT_POWER:", "%.2f", armLift);
+            telemetry.addData("ARM_LIFT_POWER:", armLift);
             telemetry.update();
         }
     }
