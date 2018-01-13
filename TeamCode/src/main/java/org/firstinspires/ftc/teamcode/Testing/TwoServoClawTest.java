@@ -65,18 +65,18 @@ public class TwoServoClawTest extends LinearOpMode {
     Servo leftClaw  = null;
     Servo rightClaw = null;
 
+    static final double LEFT_CLAW_HOME  = 0.89; //Set starting position for servos
+    static final double RIGHT_CLAW_HOME = 0.02;
+    static final double SERVO_DELTA     = 0.01; //Set amount to move servos
+
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() {
 
         leftClaw  = hardwareMap.get(Servo.class, "left_claw");
         rightClaw = hardwareMap.get(Servo.class, "right_claw");
 
         double leftClawPos; //Define variables to store positions of servos.
         double rightClawPos;
-
-        final double LEFT_CLAW_HOME  = 0.0; //Set starting position for servos
-        final double RIGHT_CLAW_HOME = 0.0;
-        final double SERVO_DELTA     = 0.1; //Set amount to move servos
 
         leftClaw.setPosition(LEFT_CLAW_HOME);
         rightClaw.setPosition(RIGHT_CLAW_HOME);
@@ -95,9 +95,9 @@ public class TwoServoClawTest extends LinearOpMode {
             leftClawPos  = leftClaw.getPosition();
             rightClawPos = rightClaw.getPosition();
 
-            if (gamepad1.dpad_left)
+            if (gamepad1.y)
                 leftClaw.setPosition(leftClawPos - SERVO_DELTA);
-            else if (gamepad1.dpad_right)
+            else if (gamepad1.a)
                 leftClaw.setPosition(leftClawPos + SERVO_DELTA);
 
             if (gamepad1.x)
