@@ -60,10 +60,8 @@ public class Hardware17_18
     public DcMotor  frontRight  = null;
     public DcMotor  backLeft    = null;
     public DcMotor  backRight   = null;
-    public DcMotor  armLift     = null;
-    public Servo    leftClaw    = null;
-    public Servo    rightClaw   = null;
 
+    /*
     public double leftClawPos; //Define variables to store positions of servos.
     public double rightClawPos;
 
@@ -73,6 +71,7 @@ public class Hardware17_18
 
     public static final double ARM_LIFT_POWER = 0.2; //Set power to move motor
     public static final int    ARM_LIFT_HOME  = 0; //Encoder value used to move arm to a default init position
+    */
 
     /* Local OpMode members. */
     HardwareMap hwMap  = null;
@@ -92,7 +91,6 @@ public class Hardware17_18
         frontRight = hwMap.get(DcMotor.class, "front_right_drive");
         backLeft   = hwMap.get(DcMotor.class, "back_left_drive");
         backRight  = hwMap.get(DcMotor.class, "back_right_drive");
-        armLift    = hwMap.get(DcMotor.class, "arm_lift_motor");
 
         frontLeft.setDirection(DcMotor.Direction.FORWARD);
         frontRight.setDirection(DcMotor.Direction.FORWARD);
@@ -112,8 +110,5 @@ public class Hardware17_18
         backLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        //Define and initialize servos
-        leftClaw  = hwMap.get(Servo.class, "left_claw");
-        rightClaw = hwMap.get(Servo.class, "right_claw");
     }
 }
