@@ -69,7 +69,7 @@ public class RedLeft_base extends LinearOpMode {
     static final double     TURN_SPEED    = 0.3;
 
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() {
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Ready to run");
