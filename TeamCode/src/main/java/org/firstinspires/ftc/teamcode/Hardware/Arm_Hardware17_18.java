@@ -55,15 +55,19 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class Arm_Hardware17_18
 {
     /* Public OpMode members. */
-    public DcMotor  armLift     = null;
-    public Servo    leftClaw    = null;
-    public Servo    rightClaw   = null;
+    public DcMotor  armLift; //don't use null here!
+    public Servo    leftClaw;
+    public Servo    rightClaw;
 
-    public static final double LEFT_CLAW_HOME = 0.0; //Set starting position for servos
-    public static final double RIGHT_CLAW_HOME = 0.0;
-    public static final double SERVO_DELTA = 0.1; //Set amount to move servos
+    public static final double LEFT_CLAW_HOME = 0.89; //Set starting position for servos
+    public static final double RIGHT_CLAW_HOME = 0.02;
+    public static final double LEFT_CLAW_OUT = 0.67;
+    public static final double RIGHT_CLAW_OUT = 0.28;
+    public static final double LEFT_CLAW_IN = 0.27;
+    public static final double RIGHT_CLAW_IN = 0.68;
+    public static final double SERVO_DELTA = 0.01; //Set amount to move servos
 
-    public static final double ARM_LIFT_POWER = 0.2; //Set power to move motor
+    public static final double ARM_LIFT_POWER = 0.3; //Set power to move motor
     public static final int    ARM_LIFT_HOME  = 0; //Encoder value used to move arm to a default init position
 
     /* Local OpMode members. */
