@@ -32,6 +32,7 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.Auto.Robot_HoloDrive;
@@ -66,16 +67,19 @@ public class New_TeleOp17_18 extends LinearOpMode
     public void runOpMode() {
         // Initialize the robot and navigation
         drive.initDrive(this);
+        arm.init(hardwareMap);
 
         arm.leftClaw.setPosition(arm.LEFT_CLAW_HOME);
         arm.rightClaw.setPosition(arm.RIGHT_CLAW_HOME);
 
+        /*
         //Init for arm lift motor
         arm.armLift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         arm.armLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         arm.armLift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         arm.armLift.setTargetPosition(arm.ARM_LIFT_HOME);
         arm.armLift.setPower(arm.ARM_LIFT_POWER);
+        */
 
         // Wait for the game to start (driver presses PLAY)
         while (!isStarted()) {
@@ -101,20 +105,32 @@ public class New_TeleOp17_18 extends LinearOpMode
                 arm.armLift.setPower(-arm.ARM_LIFT_POWER);
             else if (gamepad1.right_bumper)
                 arm.armLift.setPower(arm.ARM_LIFT_POWER);
+            else if (!gamepad1.left_bumper && !gamepad2.right_bumper)
+                arm.armLift.setPower(0);
 
             //Assigns servo positions to variables.
             double leftClawPos  = arm.leftClaw.getPosition();
             double rightClawPos = arm.rightClaw.getPosition();
 
-            if (gamepad1.dpad_left)
+            if (gamepad1.y) {
+                arm.leftClaw.setPosition(arm.LEFT_CLAW_OUT);
+                arm.rightClaw.setPosition(arm.RIGHT_CLAW_OUT);
+            } else if (gamepad1.x) {
+                arm.leftClaw.setPosition(arm.LEFT_CLAW_IN);
+                arm.rightClaw.setPosition(arm.RIGHT_CLAW_IN);
+            }
+
+            /*
+            if (gamepad1.y)
                 arm.leftClaw.setPosition(leftClawPos - arm.SERVO_DELTA);
-            else if (gamepad1.dpad_right)
+            else if (gamepad1.a)
                 arm.leftClaw.setPosition(leftClawPos + arm.SERVO_DELTA);
 
             if (gamepad1.x)
                 arm.rightClaw.setPosition(rightClawPos - arm.SERVO_DELTA);
             else if (gamepad1.b)
                 arm.rightClaw.setPosition(rightClawPos + arm.SERVO_DELTA);
+            */
 
             //  Move the robot according to the pre-determined axis motions
             drive.moveRobot();
