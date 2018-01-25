@@ -63,8 +63,12 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class OneMotorArmLiftTest extends LinearOpMode {
 
     DcMotor armLift;
+    double  power   = 0;
+    boolean rampUp  = true;
 
-    static final double ARM_LIFT_POWER = 0.3; //Set power to move motor
+    static final double ARM_LIFT_POWER = 0.3;   //Set power to move motor
+    static final double INCREMENT   = 0.01;     // amount to ramp motor each CYCLE_MS cycle
+    static final int    CYCLE_MS    =   50;     // period of each cycle
 
     @Override
     public void runOpMode() {
@@ -81,12 +85,24 @@ public class OneMotorArmLiftTest extends LinearOpMode {
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
+
+            //Original arm lift code (works with bumpers only, no fine speed control)
+            /*
             if (gamepad1.left_bumper)
                 armLift.setPower(-ARM_LIFT_POWER);
             else if (gamepad1.right_bumper)
                 armLift.setPower(ARM_LIFT_POWER);
             else if (!gamepad1.left_bumper && !gamepad2.right_bumper)
                 armLift.setPower(0);
+            */
+
+            while (gamepad1.left_bumper)
+                armLift.setPower(-ARM_LIFT_POWER);
+            while (gamepad1.right_bumper)
+                armLift.setPower(ARM_LIFT_POWER);
+
+            armLift.setPower(-gamepad1.left_trigger);
+            armLift.setPower(gamepad1.right_trigger);
 
             //Send telemetry messages corresponding to servo positions.
             telemetry.addData("ARM_LIFT_POWER:", armLift);
