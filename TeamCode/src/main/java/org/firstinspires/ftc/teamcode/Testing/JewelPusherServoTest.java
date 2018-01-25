@@ -34,6 +34,7 @@ package org.firstinspires.ftc.teamcode.Testing;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -60,16 +61,16 @@ import com.qualcomm.robotcore.hardware.Servo;
 //@Disabled
 public class JewelPusherServoTest extends LinearOpMode {
 
-    Servo servoLift   = null;
-    Servo servoRotate = null;
+    CRServo servoLift;
+    CRServo servoRotate;
 
     @Override
     public void runOpMode() throws InterruptedException {
 
-        servoLift   = hardwareMap.get(Servo.class, "jewel_lift");
-        servoRotate = hardwareMap.get(Servo.class, "jewel_rotate");
+        servoLift   = hardwareMap.get(CRServo.class, "jewel_lift");
+        servoRotate = hardwareMap.get(CRServo.class, "jewel_rotate");
 
-        final double SERVO_DELTA = 0.1; //Set amount to move servo
+        final double SERVO_DELTA = 0.01; //Set amount to move servo
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Say", "Hello Driver");    //
@@ -81,22 +82,26 @@ public class JewelPusherServoTest extends LinearOpMode {
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
-            double liftPosition   = servoLift.getPosition();
+            /*
+            double liftPosition   = servoLift.();
             double rotatePosition = servoRotate.getPosition();
+            */
 
             if (gamepad1.dpad_up)
-                servoLift.setPosition(liftPosition + SERVO_DELTA);
+                servoLift.setPower(SERVO_DELTA);
             else if (gamepad1.dpad_down)
-                servoLift.setPosition(liftPosition - SERVO_DELTA);
+                servoLift.setPower(-SERVO_DELTA);
             else if (gamepad1.dpad_left)
-                servoRotate.setPosition(rotatePosition - SERVO_DELTA);
+                servoRotate.setPower(-SERVO_DELTA);
             else if (gamepad1.dpad_right)
-                servoRotate.setPosition(rotatePosition + SERVO_DELTA);
+                servoRotate.setPower(SERVO_DELTA);
 
+            /*
             //Send telemetry messages corresponding to servo positions.
             telemetry.addData("jewel_lift Position: ", liftPosition);
             telemetry.addData("jewel_rotate Position: ", rotatePosition);
             telemetry.update();
+            */
         }
     }
 }
