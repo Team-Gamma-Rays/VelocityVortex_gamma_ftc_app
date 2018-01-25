@@ -34,6 +34,7 @@ package org.firstinspires.ftc.teamcode.Auto;
 
 import android.graphics.Color;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
@@ -59,21 +60,21 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 
 @TeleOp(name="Push Jewel RED", group="Testing")
-//@Disabled
+@Disabled
 public class Push_Jewel_RED extends LinearOpMode {
 
-    Servo servoLift   = null;
-    Servo servoRotate = null;
+    private Servo servoLift   = null;
+    private Servo servoRotate = null;
 
-    ColorSensor colorSensor;
+    private ColorSensor colorSensor;
 
     private enum JewelColor {RED, BLUE};
-    JewelColor color;
+    private JewelColor color;
 
-    static final double RED_MIN   = 2.0;
-    static final double RED_MAX   = 10.0;
-    static final double BLUE_MIN  = 200.0;
-    static final double BLUE_MAX  = 250.0;
+    private static final double RED_MIN   = 2.0;
+    private static final double RED_MAX   = 10.0;
+    private static final double BLUE_MIN  = 200.0;
+    private static final double BLUE_MAX  = 250.0;
 
     @Override
     public void runOpMode() {
