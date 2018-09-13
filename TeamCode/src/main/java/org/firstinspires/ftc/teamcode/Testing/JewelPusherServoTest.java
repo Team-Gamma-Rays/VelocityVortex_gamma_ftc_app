@@ -62,13 +62,13 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class JewelPusherServoTest extends LinearOpMode {
 
     CRServo servoLift;
-    CRServo servoRotate;
+    Servo servoRotate;
 
     @Override
     public void runOpMode() throws InterruptedException {
 
         servoLift   = hardwareMap.get(CRServo.class, "jewel_lift");
-        servoRotate = hardwareMap.get(CRServo.class, "jewel_rotate");
+        servoRotate = hardwareMap.get(Servo.class, "jewel_rotate");
 
         final double SERVO_DELTA = 0.01; //Set amount to move servo
 
@@ -82,26 +82,23 @@ public class JewelPusherServoTest extends LinearOpMode {
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
-            /*
-            double liftPosition   = servoLift.();
             double rotatePosition = servoRotate.getPosition();
-            */
 
             if (gamepad1.dpad_up)
-                servoLift.setPower(SERVO_DELTA);
+                servoLift.setPower(1);
             else if (gamepad1.dpad_down)
-                servoLift.setPower(-SERVO_DELTA);
+                servoLift.setPower(-1);
             else if (gamepad1.dpad_left)
-                servoRotate.setPower(-SERVO_DELTA);
+                servoRotate.setPosition(rotatePosition - SERVO_DELTA);
             else if (gamepad1.dpad_right)
-                servoRotate.setPower(SERVO_DELTA);
+                servoRotate.setPosition(rotatePosition + SERVO_DELTA);
 
-            /*
+
             //Send telemetry messages corresponding to servo positions.
-            telemetry.addData("jewel_lift Position: ", liftPosition);
+            telemetry.addData("jewel_lift Power: ", servoLift.getPower());
             telemetry.addData("jewel_rotate Position: ", rotatePosition);
             telemetry.update();
-            */
+
         }
     }
 }
