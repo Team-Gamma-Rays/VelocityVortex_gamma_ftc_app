@@ -14,7 +14,7 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
  */
 
 @TeleOp(name = "Identify Jewels", group = "Sensor")
-//@Disabled
+@Disabled
 public class IdentifyJewels extends LinearOpMode{
 
     ColorSensor colorSensor;
